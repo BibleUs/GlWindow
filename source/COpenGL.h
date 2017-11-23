@@ -11,7 +11,6 @@
 
 #include "GLWindow.h"
 #include "CWin.h"
-#include "GLData.h"
 
 enum Rendermodes
 {
@@ -48,7 +47,7 @@ class COpenGl : public GLWindow
 	friend class CGLData;
 public:
 
-    COpenGl( HINSTANCE hInstance, HWND hParent, int nX, int nY, int nWidth, int nHeight, int nId, CGLData* pData );
+    COpenGl( HINSTANCE hInstance, HWND hParent, int nX, int nY, int nWidth, int nHeight, int nId, class CGLData* pData );
 	~COpenGl();
 
 	void drawstart( void );
@@ -56,21 +55,21 @@ public:
 
 	void draworigin( vecf origin, veci rotation );
 	void drawcross( vecf coordinate );
-	void drawtext( int x, int y, vecf color, char* txt, ... );
+    void drawtext( int x, int y, vecf color, const char* txt, ... );
 
 	void rotate( float, float, float );
 	void move( float, float, float );
 	
 	LRESULT ClassProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
-	void SetHWND( HWND hWnd ) { m_hWnd = hWnd; };
-	void SetGrid( bool bGrid ) { m_bGrid = bGrid; };
-	void ToggleGrid( bool bGrid ) { m_bGrid = !m_bGrid; };
+    void SetHWND( HWND hWnd ) { m_hWnd = hWnd; }
+    void SetGrid( bool bGrid ) { m_bGrid = bGrid; }
+    void ToggleGrid( bool bGrid ) { m_bGrid = !m_bGrid; }
 
 	void SetRenderMode( int nMode );
 	void SetViewMode( int nMode );
 	void SetMouseMode( int nMode );
 
-	void InvalidateGL() { InvalidateRect( m_hWnd, NULL, TRUE ); };
+    void InvalidateGL() { InvalidateRect( m_hWnd, NULL, TRUE ); }
 
 private:
 	void SetError( char *txt, ... );
@@ -88,7 +87,7 @@ private:
 	void SetupLighting( void );
 	void SetupBlending( void );
 
-	CGLData*							m_pData;
+    class CGLData*						m_pData;
 
 	float								oldx, oldy;
 	float								oldpx, oldpy, oldpz;

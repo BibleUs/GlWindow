@@ -18,7 +18,7 @@ CCommonDialogs::~CCommonDialogs( void )
 // Memberfuncties                  //
 /////////////////////////////////////
 
-char *CCommonDialogs::open( char *title, char *szFilter, char *szDefExt )
+char *CCommonDialogs::open( const char *title, const char *szFilter, const char *szDefExt )
 {
 	char *result;
 	OPENFILENAME ofn = {0};
@@ -42,7 +42,8 @@ char *CCommonDialogs::open( char *title, char *szFilter, char *szDefExt )
 	if( GetOpenFileName( &ofn ) != 0 )
 	{
 		result = new char[strlen( ofn.lpstrFile )+1];
-		for ( int i = 0; i < strlen( ofn.lpstrFile ); i++ )
+        int i = 0;
+        for ( i = 0; i < strlen( ofn.lpstrFile ); i++ )
 		{
 			result[i] = ofn.lpstrFile[i];
 			if ( ofn.lpstrFile[i] == '\\' )
@@ -55,7 +56,7 @@ char *CCommonDialogs::open( char *title, char *szFilter, char *szDefExt )
 	return NULL;
 }
 
-char *CCommonDialogs::save( char *title, char *szFilter, char *szDefExt )
+char *CCommonDialogs::save( const char *title, const char *szFilter, const char *szDefExt )
 {
 	char *result;
 	OPENFILENAME ofn = {0};
@@ -79,7 +80,8 @@ char *CCommonDialogs::save( char *title, char *szFilter, char *szDefExt )
 	if( GetSaveFileName( &ofn ) != 0 )
 	{
 		result = new char[strlen( ofn.lpstrFile )+1];
-		for ( int i = 0; i < strlen( ofn.lpstrFile ); i++ )
+        int i = 0;
+        for ( i = 0; i < strlen( ofn.lpstrFile ); i++ )
 		{
 			result[i] = ofn.lpstrFile[i];
 			if ( ofn.lpstrFile[i] == '\\' )
@@ -92,7 +94,7 @@ char *CCommonDialogs::save( char *title, char *szFilter, char *szDefExt )
 	return NULL;
 }
 
-char *CCommonDialogs::folder( char *title )
+char *CCommonDialogs::folder( const char *title )
 {
 	BROWSEINFO bi;
     ITEMIDLIST *pidl;
@@ -114,7 +116,8 @@ char *CCommonDialogs::folder( char *title )
     if ( SHGetPathFromIDList(pidl, mydir) )
 	{
 		result = new char[strlen( mydir )+1];
-		for ( int i = 0; i < strlen( mydir ); i++ )
+        int i = 0;
+        for ( i = 0; i < strlen( mydir ); i++ )
 		{
 			result[i] = mydir[i];
 			if ( mydir[i] == '\\' )

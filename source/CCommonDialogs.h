@@ -17,9 +17,9 @@ public:
 	CCommonDialogs( HINSTANCE, HWND );
 	~CCommonDialogs( void );
 
-	char *open( char *, char *, char * );
-	char *save( char *, char *, char * );
-	char *folder( char *title );
+    char *open( const char *, const char *, const char * );
+    char *save( const char *, const char *, const char * );
+    char *folder( const char *title );
 };
 
 #endif

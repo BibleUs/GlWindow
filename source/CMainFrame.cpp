@@ -121,6 +121,7 @@ LRESULT CMainFrame::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				m_pOpengl1->InvalidateGL();
 				m_pOpengl2->InvalidateGL();
 				m_pOpengl3->InvalidateGL();
+                delete []res;
 			}
 			break;
 		case ID_BESTAND_SLUITEN:

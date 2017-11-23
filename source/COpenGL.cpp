@@ -1,4 +1,5 @@
 #include "COpenGL.h"
+#include "GLData.h"
 #include <windows.h>
 #include <assert.h>
 
@@ -590,7 +591,7 @@ void COpenGl::drawcross( vecf coordinate )
 // Draw a text at the specified location on the screen in the
 // specified color
 //////////////////////////////////////////////////////////////////////////
-void COpenGl::drawtext( int x, int y, vecf color, char* txt, ... )
+void COpenGl::drawtext( int x, int y, vecf color, const char* txt, ... )
 {
 	char		text[1024];
 	va_list		ap;
